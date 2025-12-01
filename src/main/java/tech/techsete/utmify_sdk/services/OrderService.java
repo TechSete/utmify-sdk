@@ -22,11 +22,9 @@ import java.util.Map;
  * Esta classe foi projetada para ser usada em aplicações Spring.
  * </p>
  *
- * <h2>Exemplo de Uso:</h2>
- * <pre>{@code
- * OrderService orderService = new OrderService(webClient);
- * OrderResponse response = orderService.createOrder(headers, orderRequest);
- * }</pre>
+ * @see WebClient
+ * @see OrderRequest
+ * @see OrderResponse
  */
 @Service("UtmifySDKOrderService")
 public class OrderService {
@@ -49,7 +47,7 @@ public class OrderService {
      * Cria um pedido de forma síncrona utilizando os cabeçalhos e o {@link OrderRequest} fornecidos.
      * Esta operação bloqueia a execução até que a resposta seja obtida.
      *
-     * <h2>Exemplo de Uso:</h2>
+     * <p><b>Exemplo de Uso:</b></p>
      * <pre>{@code
      * Map<String, String> headers = Map.of("Authorization", "Bearer token_123");
      * OrderRequest request = new OrderRequest(...);
@@ -71,7 +69,7 @@ public class OrderService {
      * Cria um pedido de forma assíncrona utilizando os cabeçalhos e o {@link OrderRequest} fornecidos.
      * A operação retorna um {@link Mono} para ser tratado de forma reativa e não bloqueante.
      *
-     * <h2>Exemplo de Uso:</h2>
+     * <p><b>Exemplo de Uso:</b></p>
      * <pre>{@code
      * Map<String, String> headers = Map.of("Authorization", "Bearer token_123");
      * OrderRequest request = new OrderRequest(...);
@@ -96,4 +94,5 @@ public class OrderService {
                 .retrieve()
                 .bodyToMono(OrderResponse.class);
     }
+
 }
