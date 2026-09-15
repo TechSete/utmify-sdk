@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.8</version>
+		<version>4.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tech.techsete</groupId>
 	<artifactId>utmify-sdk</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>utmify-sdk</name>
 	<description>Biblioteca SDK para integrações de trackamento com Utmify</description>
     <url>https://github.com/TechSete/utmify-sdk</url>
@@ -59,6 +59,10 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -120,7 +124,7 @@
                 </executions>
             </plugin>
 
-            <!-- Assinatura GPG -->
+            <!-- Assinatura GPG apenas no deploy -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -128,7 +132,7 @@
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
-                        <phase>verify</phase>
+                        <phase>deploy</phase>
                         <goals><goal>sign</goal></goals>
                         <configuration>
                             <keyname>${gpg.keyname}</keyname>
